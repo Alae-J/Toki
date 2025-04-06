@@ -186,7 +186,7 @@ Toki is the **first real app** I’ve built after escaping tutorial hell — a f
 
 My dream? To **work or intern in Japan** and grow through purposeful development.
 
-> [LinkedIn Post – Read My Journey](#) <!-- To replace with post URL -->
+> [LinkedIn Post – Read My Journey](https://www.linkedin.com/posts/alae-j_react-springboot-typescript-activity-7314630940557758464-Mjp5?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFFe4T4BHDpxbykZe3TD05IcNi1FlZSi0tw)
 
 ---
 
