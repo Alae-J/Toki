@@ -2,46 +2,61 @@ import banner from "../../../assets/images/Banner.png";
 import SaveCancelButtons from "./SaveCancelButtons";
 
 interface Props {
-    activeTab: "general" | "profile";
-    onTabChange: (tab: "general" | "profile") => void;
-    onSave: () => void;
-    onCancel: () => void;
+  activeTab: "general" | "profile";
+  onTabChange: (tab: "general" | "profile") => void;
+  onSave: () => void;
+  onCancel: () => void;
 }
 
-const Banner = ({ activeTab, onTabChange, onSave, onCancel }: Props) => (
-    <div className="relative w-full">
-        <img src={banner} className="w-full h-100 object-cover object-[center_-980px]" />
-        <div className="absolute top-105 right-10 flex gap-4">
-            <SaveCancelButtons onCancel={onCancel} onSave={onSave} />
-        </div>
-        <div className="absolute top-100 flex flex-col gap-2">
-            {/* avatar + title + tabs */}
-            {/* Avatar + Title + Tabs */}
-            <div className="absolute left-32 flex flex-col gap-2">
-                <h1 className="text-2xl font-bold mt-2">Settings</h1>
+const Banner = ({ activeTab, onTabChange, onSave, onCancel }: Props) => {
+  return (
+    <div className="w-full">
+      {/* Banner Image */}
+      <div className="w-full h-[200px] sm:h-[320px]">
+        <img
+          src={banner}
+          alt="Settings Banner"
+          className="w-full h-full object-cover object-center"
+        />
+      </div>
 
-                {/* Tabs */}
-                <div className="flex gap-8 mt-2 text-sm font-medium">
-                    <button
-                        className={`cursor-pointer pb-1 border-b-2 ${
-                        activeTab === "general" ? "border-[#c97e4d]" : "border-transparent"
-                        }`}
-                        onClick={() => onTabChange("general")}
-                    >
-                        General
-                    </button>
-                    <button
-                        className={`cursor-pointer pb-1 border-b-2 ${
-                        activeTab === "profile" ? "border-[#c97e4d]" : "border-transparent"
-                        }`}
-                        onClick={() => onTabChange("profile")}
-                    >
-                        Profile
-                    </button>
-                </div>
-            </div>
+      {/* Title + Tabs + Buttons */}
+      <div className="w-full px-6 sm:px-16 py-4 sm:py-6 flex flex-wrap justify-between items-center gap-4 text-[#3e2c1c]">
+
+        {/* Left: Title + Tabs */}
+        <div>
+          <h1 className="text-2xl font-bold mb-2 text-[#3e2c1c]">Settings</h1>
+          <div className="flex gap-6 text-sm font-medium">
+            <button
+              className={`cursor-pointer pb-1 border-b-2 transition ${
+                activeTab === "general"
+                  ? "border-[#c97e4d] text-[#c97e4d]"
+                  : "border-transparent text-[#3e2c1c]/80 hover:text-[#c97e4d]"
+              }`}
+              onClick={() => onTabChange("general")}
+            >
+              General
+            </button>
+            <button
+              className={`cursor-pointer pb-1 border-b-2 transition ${
+                activeTab === "profile"
+                  ? "border-[#c97e4d] text-[#c97e4d]"
+                  : "border-transparent text-[#3e2c1c]/80 hover:text-[#c97e4d]"
+              }`}
+              onClick={() => onTabChange("profile")}
+            >
+              Profile
+            </button>
+          </div>
         </div>
+
+        {/* Right: Save/Cancel Buttons */}
+        <div className="self-end sm:self-center">
+          <SaveCancelButtons onCancel={onCancel} onSave={onSave} />
+        </div>
+      </div>
     </div>
-);
+  );
+};
 
 export default Banner;

@@ -108,19 +108,32 @@ const PomodoroPage = () => {
 
   return (
     <main
-      className="w-11/12 max-w-[1400px] h-[75vh] mx-auto my-auto flex rounded-2xl shadow-2xl overflow-hidden"
+      className="w-full max-w-[1400px] h-auto sm:h-[75vh] mx-auto my-auto flex flex-col sm:flex-row rounded-2xl shadow-2xl overflow-hidden"
       style={{
         backgroundColor: `${currentColors.bg}cc`,
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
       }}
     >
-      {/* Left Side - Timer & Controls */}
+      {/* Task Info on top (mobile) / right (desktop) */}
       <section
-        className="w-1/2 flex items-center justify-center"
+        className="w-full sm:w-1/2 flex items-center justify-center p-6 sm:p-8"
+        style={{ backgroundColor: currentColors.subBg }}
+      >
+        <PomodoroTaskInfo
+          task={currentTask}
+          currentSessionType={SESSION_CYCLE[specialIndex]}
+          colorTheme={currentColors}
+          workDuration={userSettings?.workDuration ?? 50}
+        />
+      </section>
+
+      {/* Timer & Controls below (mobile) / left (desktop) */}
+      <section
+        className="w-full sm:w-1/2 flex items-center justify-center"
         style={{ backgroundColor: currentColors.bg }}
       >
-        <div className="w-[40%] flex flex-col items-center justify-end h-full pb-16 gap-8">
+        <div className="w-full sm:w-[40%] flex flex-col items-center justify-end sm:justify-center gap-8 pb-10 sm:pb-16">
           <PomodoroTimer 
             timeLeft={timeLeft}
             isCounting={isCounting}
@@ -136,20 +149,8 @@ const PomodoroPage = () => {
           />
         </div>
       </section>
-  
-      {/* Right Side - Task Info */}
-      <section
-        className="w-1/2 flex items-center justify-center p-8"
-        style={{ backgroundColor: currentColors.subBg }}
-      >
-        <PomodoroTaskInfo
-          task={currentTask}
-          currentSessionType={SESSION_CYCLE[specialIndex]}
-          colorTheme={currentColors}
-          workDuration={userSettings?.workDuration ?? 50}
-        />
-      </section>
     </main>
+
   );
   
   

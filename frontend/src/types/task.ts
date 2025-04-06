@@ -1,7 +1,6 @@
 export interface Task {
     id: number,
     title: string,
-    description: string,
     hasPriority: boolean,
     dueDate: string,
     estimatedTime: number,
@@ -12,12 +11,11 @@ export interface Task {
 };
 
 export interface CreateTaskPayload {
-    title: string,
-    description: string,
-    hasPriority: boolean,
-    dueDate: string,
-    estimatedTime: number,
-    completed: boolean,
-    status: string,
-    sessionsCount: number
-};
+    title: string;
+    hasPriority: boolean;
+    dueDate: string;
+    estimatedTime: number;
+    completed: boolean;
+    status: string;
+    sessionsCount: number;
+}

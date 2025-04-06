@@ -28,21 +28,22 @@ const ColorPickerModal = ({ currentColor, onSelectColor, onClose }: Props) => {
     }, [onClose]);
     
     return (
+      <div
+      ref={ref}
+      className="absolute top-10 right-0 sm:left-0 sm:right-auto flex gap-3 p-3 bg-white border border-gray-300 rounded-xl shadow-lg z-50 transition-all duration-200"
+    >
+      {predefinedColors.map((color) => (
         <div
-  ref={ref}
-  className="absolute top-10 left-0 flex gap-3 p-3 bg-white border border-gray-300 rounded-xl shadow-lg z-50 transition-all duration-200"
->
-  {predefinedColors.map((color) => (
-    <div
-      key={color}
-      className={`w-7 h-7 rounded-full cursor-pointer transition-all duration-150 border-2
-        ${color === currentColor ? "border-[#c4c4c4] scale-110" : "border-gray-200 hover:scale-105"}
-      `}
-      style={{ backgroundColor: color }}
-      onClick={() => onSelectColor(color)}
-    />
-  ))}
-</div>
+          key={color}
+          className={`w-7 h-7 rounded-full cursor-pointer transition-all duration-150 border-2
+            ${color === currentColor ? "border-[#c4c4c4] scale-110" : "border-gray-200 hover:scale-105"}
+          `}
+          style={{ backgroundColor: color }}
+          onClick={() => onSelectColor(color)}
+        />
+      ))}
+    </div>
+    
 
     );
 };

@@ -1,14 +1,16 @@
-
 import React from "react";
 import NavBar from "./NavBar";
-
+import Footer from "./Footer";
 const Layout = ({ children }: { children: React.ReactNode }) => {
     return (
-        <div className="h-screen bg-gray-100 flex flex-col items-center p-6">
+        <div className="min-h-screen flex flex-col bg-gray-100">
             <NavBar />
-            <div className="w-full flex-grow flex">
+
+            <main className="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 overflow-x-hidden">
                 {children}
-            </div>
+            </main>
+
+            <Footer />
         </div>
     );
 };

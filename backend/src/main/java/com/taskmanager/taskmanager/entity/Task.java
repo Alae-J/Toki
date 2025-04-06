@@ -35,11 +35,6 @@ public class Task {
     @Column(name = "title", nullable = false, length = 255)
     private String title;
 
-    @NonNull
-    @NotBlank(message = "Description cannot be blank!")
-    @Column(name = "description", columnDefinition = "TEXT", nullable = false)
-    private String description;
-
     @Column(name = "priority")
     private boolean hasPriority;
 

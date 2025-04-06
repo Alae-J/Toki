@@ -41,7 +41,6 @@ public class TaskServiceImpl implements TaskService {
         Task actualTask = taskRepository.findById(id)
             .orElseThrow(() -> new TaskNotFoundException(id));
         actualTask.setTitle(task.getTitle());
-        actualTask.setDescription(task.getDescription());
         actualTask.setHasPriority(task.isHasPriority());
         actualTask.setDueDate(task.getDueDate());
         actualTask.setEstimatedTime(task.getEstimatedTime());

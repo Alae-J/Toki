@@ -6,6 +6,7 @@ import { UserSettings } from "../../../types/userSettings";
 import { User } from "../../../types/user";
 import { getUserById, handleChangeCredentials } from "../../../services/userService";
 import { getUserSettings, updateUserSettings } from "../../../services/settingsService";
+import Toast from "../../../components/alerts/Toast";
 
 type EditingSettingsState = {
     workDuration: boolean;
@@ -36,7 +37,15 @@ const SettingsPage = () => {
         email: false,
         passwordHash: false,
     });
+    const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
 
+    useEffect(() => {
+        if (toast) {
+            const timer = setTimeout(() => setToast(null), 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [toast]);
+    
     useEffect(() => {
         const userId = localStorage.getItem("userId");
         if (!userId) return;
@@ -180,7 +189,10 @@ const SettingsPage = () => {
         if (activeTab === "general") {
             try {
                 const response = await updateUserSettings(actualUserId, formSettings);
-                if (response) setOriginalSettings(response);
+                if (response) {
+                    setOriginalSettings(response);
+                    setToast({ message: "Settings saved successfully!", type: "success" });
+                }
                 setEditingFieldsGeneral({
                     workDuration: false,
                     shortBreakDuration: false,
@@ -192,34 +204,49 @@ const SettingsPage = () => {
                 });
             } catch (err) {
                 console.error("Failed to save settings:", err);
+                setToast({ message: "Failed to save settings", type: "error" });
             }
         } else {
             try {
                 const error = validateForm();
-                if (error) return alert(error);
-
+                if (error) return setToast({ message: error, type: "error" });
+    
                 const response = await handleChangeCredentials(actualUserId, formData);
-                if (response) setOriginalData({...response, passwordHash: ""});
+                if (response) {
+                    setOriginalData({ ...response, passwordHash: "" });
+                    setToast({ message: "Profile updated successfully!", type: "success" });
+                }
+    
                 setEditingFields({
                     username: false,
                     email: false,
-                    passwordHash: false
+                    passwordHash: false,
                 });
             } catch (err) {
                 console.error("Failed to save profile:", err);
+                setToast({ message: "Failed to save profile", type: "error" });
             }
         }
     };
+    
 
     return (
-        <div className="w-full min-h-screen bg-[#F3F4F8] text-black">
+        <div className="w-full min-h-screen bg-[#F3F4F8] text-black overflow-x-hidden">
+            {toast && (
+                <Toast
+                    message={toast.message}
+                    type={toast.type}
+                    onClose={() => setToast(null)}
+                />
+            )}
+
             <Banner
                 activeTab={activeTab}
                 onTabChange={setActiveTab}
                 onSave={handleSave}
                 onCancel={handleCancel}
             />
-            <div className="w-full pt-[100px]">
+            <div className="w-full px-4 sm:px-6 lg:px-8 mt-6">
                 {activeTab === "general" ? (
                     <GeneralTab
                         settings={formSettings}

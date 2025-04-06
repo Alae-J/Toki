@@ -11,8 +11,8 @@ interface Props {
 
 const ProfileTab = ({ user, editing, onChange, onStartEdit }: Props) => {
     return (
-        <div className="px-8 pt-2">
-            <div className="ml-32 flex flex-col gap-8 mt-16 w-full max-w-xl">
+        <div className="lg:px-18">
+            <div className="flex flex-col gap-8 mt-16 px-4 sm:px-8 md:px-12 lg:px-0 w-full max-w-xl">
                 <EditableField
                     label="Username"
                     value={user.username}

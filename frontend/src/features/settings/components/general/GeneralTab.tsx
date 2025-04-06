@@ -26,8 +26,8 @@ interface Props {
 }
 
 const GeneralTab = ({ settings, editing, onChange, onStartEdit }: Props) => (
-  <div className="px-8 pt-2">
-    <div className="flex flex-col gap-10 mt-16 w-full max-w-2xl">
+  <div className="pt-2">
+    <div className="flex flex-col gap-10 w-full max-w-4xl px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24">
       <DurationSettings
         durations={{
           work: settings.workDuration,
