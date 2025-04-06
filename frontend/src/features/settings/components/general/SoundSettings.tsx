@@ -1,9 +1,9 @@
 
 interface Props {
-  value: string;
-  editing: boolean;
-  onChange: (value: string) => void;
-  onStartEdit: () => void;
+    value: string;
+    editing: boolean;
+    onChange: (value: string) => void;
+    onStartEdit: () => void;
 }
 
 const soundOptions = ["None", "Forest", "Rain", "Waves", "Café"];

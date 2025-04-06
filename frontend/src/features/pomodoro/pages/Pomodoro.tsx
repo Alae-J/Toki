@@ -150,11 +150,7 @@ const PomodoroPage = () => {
         </div>
       </section>
     </main>
-
   );
-  
-  
-  
 };
 
 export default PomodoroPage;

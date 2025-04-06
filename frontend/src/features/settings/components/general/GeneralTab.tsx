@@ -2,9 +2,7 @@ import { UserSettings } from "../../../../types/userSettings";
 import DurationSettings from "./DurationSettings";
 import ThemeSettings from "./ThemeSettings";
 
-// Duration field keys
 type DurationKey = "workDuration" | "shortBreakDuration" | "longBreakDuration";
-// Theme color field keys
 type ThemeKey = "workColor" | "shortBreakColor" | "longBreakColor";
 
 interface Props {

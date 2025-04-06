@@ -2,11 +2,11 @@ import { FaPlay, FaPause, FaForward } from "react-icons/fa";
 import { SessionType, Template } from "../../../types/pomodoro";
 
 interface Props {
-  isCounting: boolean;
-  onStartPause: () => void;
-  currentSessionType: SessionType;
-  onSkip: () => void;
-  colorTheme: Template;
+  isCounting: boolean,
+  onStartPause: () => void,
+  currentSessionType: SessionType,
+  onSkip: () => void,
+  colorTheme: Template
 }
 
 const PomodoroControls = ({ isCounting, onStartPause, onSkip, colorTheme }: Props) => {

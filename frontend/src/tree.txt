@@ -1,0 +1,95 @@
+.
+├── App.css
+├── App.tsx
+├── assets
+│   ├── images
+│   │   ├── Banner.png
+│   │   ├── ChatGPT Image Apr 3, 2025, 04_04_14 PM.png
+│   │   ├── ChatGPT Image Mar 29, 2025, 04_59_18 PM.png
+│   │   ├── croppedPNG.png
+│   │   ├── google-tasks-logo-13FF231D18-seeklogo.com.png
+│   │   ├── Jake-Adventure-Time-PNG-Image.png
+│   │   ├── SadTomato.png
+│   │   ├── T-logo.png
+│   │   ├── TokiAuthImage.png
+│   │   └── TomatoLogo.png
+│   └── react.svg
+├── components
+│   ├── alerts
+│   │   └── Toast.tsx
+│   ├── auth
+│   │   └── RequireAuth.tsx
+│   ├── FloatingAddButton.tsx
+│   ├── Footer.tsx
+│   ├── Layout.tsx
+│   ├── NavBar.tsx
+│   └── ui
+│       └── tooltip.tsx
+├── features
+│   ├── auth
+│   │   ├── components
+│   │   │   ├── LoginForm.tsx
+│   │   │   └── RegisterForm.tsx
+│   │   └── pages
+│   │       ├── LoginPage.tsx
+│   │       └── RegisterPage.tsx
+│   ├── pomodoro
+│   │   ├── components
+│   │   │   ├── PomodoroControls.tsx
+│   │   │   ├── PomodoroTaskInfo.tsx
+│   │   │   └── PomodoroTimer.tsx
+│   │   └── pages
+│   │       └── Pomodoro.tsx
+│   ├── settings
+│   │   ├── components
+│   │   │   ├── Banner.tsx
+│   │   │   ├── general
+│   │   │   │   ├── ColorPickerModal.tsx
+│   │   │   │   ├── DurationSettings.tsx
+│   │   │   │   ├── GeneralTab.tsx
+│   │   │   │   ├── SoundSettings.tsx
+│   │   │   │   └── ThemeSettings.tsx
+│   │   │   ├── profile
+│   │   │   │   ├── EditableField.tsx
+│   │   │   │   ├── PasswordField.tsx
+│   │   │   │   └── ProfileTab.tsx
+│   │   │   └── SaveCancelButtons.tsx
+│   │   └── pages
+│   │       └── SettingsPage.tsx
+│   └── tasks
+│       ├── components
+│       │   ├── FilterDropdown.tsx
+│       │   ├── SortDropdown.tsx
+│       │   ├── TaskCard.tsx
+│       │   └── TaskListRow.tsx
+│       └── pages
+│           ├── AddTaskPage.tsx
+│           ├── EditTaskPage.tsx
+│           └── TasksManagement.tsx
+├── hooks
+│   ├── useOverflow.tsx
+│   ├── useSettings.ts
+│   └── useTasks.tsx
+├── index.css
+├── lib
+│   └── utils.ts
+├── main.tsx
+├── routes
+│   └── routes.tsx
+├── services
+│   ├── api.ts
+│   ├── authService.ts
+│   ├── settingsService.ts
+│   ├── taskService.ts
+│   └── userService.ts
+├── tree.txt
+├── types
+│   ├── pomodoro.ts
+│   ├── task.ts
+│   ├── userSettings.ts
+│   └── user.ts
+├── utils
+│   └── getInspirationMessage.ts
+└── vite-env.d.ts
+
+28 directories, 65 files

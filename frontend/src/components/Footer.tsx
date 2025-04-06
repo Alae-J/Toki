@@ -11,7 +11,7 @@ const Footer = () => {
                     <span className="text-[#C97E4D] font-semibold">Alae</span> is the best.
                 </p>
 
-                {/* Right side: Cookie Easter Egg */}
+                {/* Right side: Cookie */}
                 <Tooltip>
                     <TooltipTrigger asChild>
                         <a

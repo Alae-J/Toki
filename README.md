@@ -1,53 +1,211 @@
-# Toki
+# Toki ✨
 
-## 🚀 Overview
-
-This project marks my first significant step as a software engineering student breaking free from tutorial hell by actually building practical, full-stack applications.
-
-After diving deep into the theory of React and Spring Boot, I decided it was essential to apply what I'd learned by creating an end-to-end application from scratch, thus solidifying my skills through real-world practice.
-
-## 🎯 What Does the App Do?
-
-The Task Manager App is designed to help you minimize procrastination by offering:
-
-- **Structured Task Organization:** Clearly organize your tasks, categorize them, and filter according to priority or status.
-- **Pomodoro Technique Integration:** Helps you efficiently complete tasks by structuring work sessions into focused intervals separated by short breaks, leveraging the well-known Pomodoro productivity method.
-
-## 🛠 Technologies Used
-
-- **React:** Chosen for its popularity, ease of use, and efficient rendering capabilities.
-- **Spring Boot:** Selected due to its widespread adoption and significance in industry-standard backend development.
-
-## 🧩 Challenges Faced
-
-- **Structuring Application Logic:** Developing intuitive features is straightforward in theory, but conceptualizing and structuring the underlying application logic from scratch posed significant challenges and great learning opportunities.
-
-## ⚙️ Installation & Running the Project
-
-### Step-by-step guide:
-
-1. **Clone the Repository**
-    ```bash
-    git clone https://github.com/Alae-J/Toki
-    ```
-
-2. **Run Frontend**
-    ```bash
-    cd frontend/
-    npm install
-    npm run dev
-    ```
-
-3. **Run Backend**
-    Open a new terminal and execute:
-    ```bash
-    cd backend/
-    mvn clean spring-boot:run
-    ```
-
-Now, your Task Manager App should be up and running!
+> A clean, full-stack task manager app with Pomodoro integration. Built from scratch to defeat tutorial hell and embrace real-world development.
 
 ---
 
-Enjoy using the app and enhancing your productivity! 🚀✨
+![Toki Preview](./frontend/src/assets/images/README/Login.png)
+
+---
+
+## 🧠 Why Toki?
+
+Toki isn’t just another task manager — it’s the first app I’ve fully built on my own, from UI to backend logic. After months of tutorials, I wanted to break free and **build something real**, something I could iterate on, refine, and deploy. That’s how Toki was born.
+
+---
+
+## ✨ Features
+
+### 📂 Task Management
+- Create, update, delete tasks
+- Set priority levels (high/low)
+- Filter by priority
+- Sort by:
+  - Recent updates
+  - Due date
+  - Estimated time
+  - Progress (based on Pomodoro sessions)
+- Toggle between **Board View** (card layout) and **List View** (rows)
+
+### 🍅 Pomodoro Integration
+- Focus, Short Break, Long Break sessions
+- Auto-starts **Breaks** after focus ends
+- **Manual-start for Focus** (ensures user is ready to work)
+- Tracks focus sessions per task
+
+### 🎨 User Customization
+- Set your own Pomodoro durations
+- Customize session colors (Focus, Breaks)
+- Change password and set a fun username
+
+### 🔐 Authentication & Security
+- JWT-based login/register
+- Auto-logout on token expiry (with redirection + toast)
+
+### 📱 Visuals & UX
+- Fully responsive (desktop & mobile)
+- Clean, intuitive interface
+- Animated icons & tooltips for better guidance
+
+---
+
+## 📸 Screenshots
+
+Here’s a guided tour of Toki from login to productivity:
+
+### 🔑 Authentication
+
+| **Login** | **Register** |
+|----------|--------------|
+| ![Login](./frontend/src/assets/images/README/MobileView-Login.png) | ![Register](./frontend/src/assets/images/README/Register.png) |
+
+---
+
+### 🏠 Dashboard & Task Management
+
+| **Dashboard – Board View** | **Dashboard – List View** |
+|----------------------------|----------------------------|
+| ![Board View](./frontend/src/assets/images/README/Dashboard-boardView.png) | ![List View](./frontend/src/assets/images/README/Dashboard-listView.png) |
+
+- **Sort & Filter:**
+  | Sorting | Filtering |
+  |---------|-----------|
+  | ![Sorting](./frontend/src/assets/images/README/Dashboard-sorting.png) | ![Filtering](./frontend/src/assets/images/README/Dashboard-filtering.png) |
+
+- **Add / Edit Tasks:**
+  | Add Task | Edit Task |
+  |----------|-----------|
+  | ![Add Task](./frontend/src/assets/images/README/AddTask.png) | ![Edit Task](./frontend/src/assets/images/README/EditTask.png) |
+
+- **Empty State:**
+  > When no tasks are found, Toki welcomes you with a sad tomato 🍅
+  ![No Tasks](./frontend/src/assets/images/README/Dashboard-noTasks.png)
+
+---
+
+### ⏱️ Pomodoro Sessions
+
+| **Focus** | **Short Break** | **Long Break** |
+|----------|------------------|----------------|
+| ![Focus](./frontend/src/assets/images/README/Pomodoro-focus.png) | ![Short Break](./frontend/src/assets/images/README/Pomodoro-shortBreak.png) | ![Long Break](./frontend/src/assets/images/README/Pomodoro-longBreak.png) |
+
+> Sessions auto-switch from Focus → Break, and wait for manual confirmation before Focus restarts.
+
+---
+
+### ⚙️ Settings
+
+| **Durations / Theme** | **Profile Tab (Username & Password)** |
+|------------------------|---------------------------------------|
+| ![General Settings](./frontend/src/assets/images/README/MobileView-Settings-generalTab.png) | ![Profile Settings](./frontend/src/assets/images/README/MobileView-Settings-profileTab.png) |
+
+---
+
+### 📱 Mobile Experience
+
+| **Dashboard** | **Pomodoro** |
+|---------------|--------------|
+| ![Mobile Dashboard](./frontend/src/assets/images/README/MobileView-Dashboard-boardView.png) | ![Mobile Pomodoro](./frontend/src/assets/images/README/MobileView-Pomodoro.png) |
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- React + TypeScript
+- TailwindCSS
+- Axios
+- Vite
+
+### Backend
+- Spring Boot
+- Spring Security (JWT)
+- H2 (In-Memory DB)
+- RESTful APIs
+
+---
+
+## 📁 Project Structure
+
+```
+frontend/src
+├── App.tsx                  # Main app entry
+├── assets/images            # Logos, illustrations, mascot
+├── components/              # Layout, Navbar, Toasts, Floating Add Btn
+├── features/
+│   ├── auth                 # Login/Register forms + pages
+│   ├── pomodoro             # Timer logic and UI
+│   ├── settings             # Theme, duration, profile
+│   └── tasks                # Task views, forms, filters
+├── hooks/                   # useTasks, useOverflow (for UI)
+├── services/                # API abstraction layer
+├── routes/                  # Client-side routing
+└── types/                   # Shared types
+
+backend/src/main/java/com/taskmanager/taskmanager
+├── entity/                  # Task, User, UserSettings
+├── repository/              # Data access layers
+├── service/                 # Business logic (Task, User, Settings)
+├── security/                # JWT config, filter, controller
+├── web/                     # REST controllers
+└── ApplicationExceptionHandler.java
+```
+
+---
+
+## 🔮 Getting Started
+
+### Prerequisites
+- Node.js & npm
+- Java 17+
+
+### Run the App Locally
+
+**Frontend:**
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+**Backend:**
+```bash
+cd backend
+./mvnw spring-boot:run
+```
+
+Both apps run independently. Frontend fetches from `http://localhost:8080`.
+
+---
+
+## 👨‍💻 About the Author
+
+Hey! I'm **Alae**, a **first-year software engineering student** from Morocco 🇲🇦.
+
+Toki is the **first real app** I’ve built after escaping tutorial hell — a full-stack project that challenged me to understand architecture, flow, and deployment from scratch.
+
+My dream? To **work or intern in Japan** and grow through purposeful development.
+
+> [LinkedIn Post – Read My Journey](#) <!-- To replace with post URL -->
+
+---
+
+## 💡 Dynamic Motivation System
+
+Each task generates a unique motivational quote based on:
+- Estimated time
+- Time left before deadline
+- Sessions completed
+
+It’s a tiny system that nudges you to **break it down, focus, and win.**
+
+---
+
+## 📃 License
+
+This project is not licensed. It’s a personal learning milestone.
+
+---
+
+*Built with grit, vision, and a tomato.* 🍅
 

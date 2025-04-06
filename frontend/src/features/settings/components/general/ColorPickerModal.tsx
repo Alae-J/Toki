@@ -1,34 +1,34 @@
 import { useEffect, useRef } from "react";
 
 interface Props {
-    currentColor: string;
-    onSelectColor: (color: string) => void;
-    onClose: () => void;
+  currentColor: string;
+  onSelectColor: (color: string) => void;
+  onClose: () => void;
 }
 
 const predefinedColors = [
-    "red",
-    "green",
-    "blue",
-    "orange",
-    "purple",
+  "red",
+  "green",
+  "blue",
+  "orange",
+  "purple",
 ];
 
 const ColorPickerModal = ({ currentColor, onSelectColor, onClose }: Props) => {
-    const ref = useRef<HTMLDivElement>(null);
-    
-    useEffect(() => {
-        const handleClickOutside = (e: MouseEvent) => {
-            if (ref.current && !ref.current.contains(e.target as Node)) {
-                onClose();
-            }
-        };
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => document.removeEventListener("mousedown", handleClickOutside);
-    }, [onClose]);
-    
-    return (
-      <div
+  const ref = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+      const handleClickOutside = (e: MouseEvent) => {
+          if (ref.current && !ref.current.contains(e.target as Node)) {
+              onClose();
+          }
+      };
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [onClose]);
+  
+  return (
+    <div
       ref={ref}
       className="absolute top-10 right-0 sm:left-0 sm:right-auto flex gap-3 p-3 bg-white border border-gray-300 rounded-xl shadow-lg z-50 transition-all duration-200"
     >
@@ -43,9 +43,7 @@ const ColorPickerModal = ({ currentColor, onSelectColor, onClose }: Props) => {
         />
       ))}
     </div>
-    
-
-    );
+  );
 };
 
 export default ColorPickerModal;

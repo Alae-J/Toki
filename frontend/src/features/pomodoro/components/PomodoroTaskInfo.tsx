@@ -2,10 +2,10 @@ import { SessionType, Template } from "../../../types/pomodoro";
 import { Task } from "../../../types/task";
 
 interface Props {
-    task: Task | null;
-    currentSessionType: SessionType;
-    colorTheme: Template;
-    workDuration: number;
+    task: Task | null,
+    currentSessionType: SessionType,
+    colorTheme: Template,
+    workDuration: number
 }
 
 const PomodoroTaskInfo = ({ task, colorTheme, workDuration }: Props) => {

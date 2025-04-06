@@ -74,7 +74,6 @@ const TasksManagement = () => {
     }
     return (
         <div className="w-full bg-[#F5F5F5] px-4 sm:px-6 lg:px-8 py-6">
-            
             <div className="mb-6 relative">
 
                 {/* Flex container for buttons and filters on larger screens */}
@@ -94,7 +93,7 @@ const TasksManagement = () => {
 
                         <button
                             className={`cursor-pointer flex items-center gap-2 px-4 py-2 rounded-full text-black font-semibold transition hover:scale-105 hover:shadow-md ${
-                            !board ? "shadow-md bg-[#FFFDF6]" : "bg-[#FFFDF6]"
+                                !board ? "shadow-md bg-[#FFFDF6]" : "bg-[#FFFDF6]"
                             }`}
                             onClick={() => setBoard(false)}
                         >
@@ -118,41 +117,40 @@ const TasksManagement = () => {
                 {/* Title on top for small screens */}
                 <h1 className="block text-center text-3xl font-bold text-black sm:hidden mt-4">Manage Tasks</h1>
             </div>
-
             
             {tasks.length === 0 ? (
-    <div className="flex flex-col items-center justify-center mt-12 text-center text-gray-500">
-    <img
-        src={NoTasksImg}
-        alt="Sad Tomato :'("
-        className="w-32 h-32 mt-2 opacity-70"
-    />
-    <h2 className="text-xl font-semibold mb-2">No tasks yet?</h2>
-    <p className="max-w-md text-sm">
-        Start your productivity journey by adding your first task.
-    </p>
-    <p className="max-w-md text-sm">
-        Break it down. Focus.{" "}
-        <span className="text-[#cecc58] font-bold tracking-wider">
-            WIN.
-        </span>
-    </p>
-    <FloatingAddButton />
-</div>
+                <div className="flex flex-col items-center justify-center mt-12 text-center text-gray-500">
+                    <img
+                        src={NoTasksImg}
+                        alt="Sad Tomato :'("
+                        className="w-32 h-32 mt-2 opacity-70"
+                    />
+                    <h2 className="text-xl font-semibold mb-2">No tasks yet?</h2>
+                    <p className="max-w-md text-sm">
+                        Start your productivity journey by adding your first task.
+                    </p>
+                    <p className="max-w-md text-sm">
+                        Break it down. Focus.{" "}
+                        <span className="text-[#cecc58] font-bold tracking-wider">
+                            WIN.
+                        </span>
+                    </p>
+                    <FloatingAddButton />
+                </div>
 
-) : !board ? (
-    <div className="bg-[#FFFDF6] rounded-2xl shadow-xl w-full max-h-[40rem] overflow-y-auto custom-scrollbar p-2">
-        {tasks.map((task) => (
-            <TaskListRow key={task.id} task={task} handleDelete={removeTaskFromList} />
-        ))}
-    </div>
-) : (
-    <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {tasks.map((task, index) => (
-            <TaskCard key={index} task={task} workDuration={userSettings?.workDuration ?? 25} />
-        ))}
-    </div>
-)}
+            ) : !board ? (
+                <div className="bg-[#FFFDF6] rounded-2xl shadow-xl w-full max-h-[40rem] overflow-y-auto custom-scrollbar p-2">
+                    {tasks.map((task) => (
+                        <TaskListRow key={task.id} task={task} handleDelete={removeTaskFromList} />
+                    ))}
+                </div>
+            ) : (
+                <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    {tasks.map((task, index) => (
+                        <TaskCard key={index} task={task} workDuration={userSettings?.workDuration ?? 25} />
+                    ))}
+                </div>
+            )}
 
             <FloatingAddButton />
         </div>

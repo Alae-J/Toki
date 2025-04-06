@@ -1,10 +1,10 @@
-import { SessionType, Template } from "../../../types/pomodoro"; // <- import Template
+import { SessionType, Template } from "../../../types/pomodoro";
 
 interface Props {
-    timeLeft: number;
-    isCounting: boolean;
-    currentSessionType: SessionType;
-    colorTheme: Template; // <- add this
+    timeLeft: number,
+    isCounting: boolean,
+    currentSessionType: SessionType,
+    colorTheme: Template
 }
 
 const PomodoroTimer = ({ timeLeft, currentSessionType, colorTheme }: Props) => {

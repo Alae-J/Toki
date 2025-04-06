@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 
 interface Props {
-  message: string;
-  type?: "success" | "error";
-  onClose: () => void;
+  message: string,
+  type?: "success" | "error",
+  onClose: () => void
 }
 
 const Toast = ({ message, type = "success", onClose }: Props) => {

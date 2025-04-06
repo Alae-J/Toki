@@ -66,7 +66,6 @@ const TaskListRow = ({ task, handleDelete }: Props) => {
             </div>
         </div>
 
-
     );
 };
 
