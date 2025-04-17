@@ -20,25 +20,25 @@ services:                          # Declare all the "containers" here
     container_name: toki-backend  # Human-readable container name
     ports:
       - "8080:8080"                # Map container port 8080 → host 8080
-    depends_on:
-      - db                         # Wait for db container to be ready before backend starts
+    # depends_on:
+    #   - db                         # Wait for db container to be ready before backend starts
     env_file:
       - .env
     networks:
       - toki-net                   # Put backend & db on same virtual network
 
-  db:                              # PostgreSQL container
-    image: postgres:16             # Official Postgres image
-    container_name: toki-db        # Optional readable name
-    restart: always                # Auto-restart if it crashes
-    environment:                   # Postgres DB config
-      POSTGRES_DB: tokidb
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: tokipass
-    volumes:
-      - pgdata:/var/lib/postgresql/data  # Persist DB data in volume
-    networks:
-      - toki-net                   # Same network as backend
+  # db:                              # PostgreSQL container
+  #   image: postgres:16             # Official Postgres image
+  #   container_name: toki-db        # Optional readable name
+  #   restart: always                # Auto-restart if it crashes
+  #   environment:                   # Postgres DB config
+  #     POSTGRES_DB: tokidb
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: tokipass
+  #   volumes:
+  #     - pgdata:/var/lib/postgresql/data  # Persist DB data in volume
+  #   networks:
+  #     - toki-net                   # Same network as backend
 
 networks:
   toki-net:                        # Defines the isolated network
