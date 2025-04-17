@@ -18,10 +18,10 @@ api.interceptors.response.use(
     response => response,
     error => {
         if (error.response?.status === 401 || error.response?.status === 403) {
+            console.log(error.response?.status)
             localStorage.removeItem("token");
             localStorage.removeItem("userId");
             alert("Your session has expired. Please log in again.");
-            window.location.href = "/login";
         }
 
         return Promise.reject(error);
