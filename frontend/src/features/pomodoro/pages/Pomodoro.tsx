@@ -64,7 +64,7 @@ const PomodoroPage = () => {
         }
         return prev - 1;
       });
-    }, 2);
+    }, 1000);
 
     return () => clearInterval(intervalId);
   }, [isCounting, timeLeft]);
