@@ -22,4 +22,4 @@ USER app
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["sh", "-c", "echo JWT_SECRET=$JWT_SECRET && echo SPRING_DATASOURCE_URL=$SPRING_DATASOURCE_URL && java -jar app.jar"]
