@@ -149,6 +149,7 @@ const PomodoroPage = () => {
           />
         </div>
       </section>
+      <section></section>
     </main>
   );
 };
