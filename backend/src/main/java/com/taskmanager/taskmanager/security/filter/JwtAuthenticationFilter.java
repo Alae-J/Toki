@@ -66,6 +66,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 // Step 7: Mark this user as authenticated for this request
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+            } else {
+                // Token is invalid or expired → reject the request
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                response.getWriter().write("Token is expired or invalid");
+                return;
             }
         }
         // Step 8: Continue the request and pass control to the next filter (or controller)

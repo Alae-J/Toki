@@ -77,7 +77,8 @@ const TasksManagement = () => {
             <div className="mb-6 relative">
 
                 {/* Flex container for buttons and filters on larger screens */}
-                <div className="flex justify-between items-center">
+                <div className="flex flex-wrap justify-center gap-3 sm:justify-between items-center">
+
                 
                     {/* View mode buttons */}
                     <div className="flex gap-3">
