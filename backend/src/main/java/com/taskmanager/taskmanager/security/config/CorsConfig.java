@@ -13,7 +13,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**") // Allow all routes
-                        .allowedOrigins("http://localhost:5173", "https://my-live-frontend.com") // Your React app
+                        .allowedOrigins("http://localhost:5173", "https://toki-xichromes-projects.vercel.app") // Your React app
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);
