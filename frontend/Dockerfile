@@ -21,5 +21,6 @@ USER app
 # Dev port
 EXPOSE 5173
 
-# Run Vite with host binding
-CMD ["npm", "run", "dev", "--", "--host"]
+RUN npm run build
+CMD ["npx", "serve", "dist"]
+
