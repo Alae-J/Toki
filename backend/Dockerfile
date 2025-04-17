@@ -14,7 +14,7 @@ RUN addgroup -S app && adduser -S -G app app
 # Copy built jar
 COPY --from=build /app/target/*.jar app.jar
 
-# Fix permissions (optional but good)
+# Fix permissions
 RUN chown -R app:app /app
 
 # Switch to non-root user
