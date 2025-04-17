@@ -40,18 +40,74 @@ Toki isn’t just another task manager — it’s the first app I’ve fully bui
 
 ### 🔐 Authentication & Security
 - JWT-based login/register
-- Auto-logout on token expiry (with redirection + toast)
+- Auto-removal of expired tokens via Axios interceptor
+- Redirection to login + toast when session expires
 
 ### 📱 Visuals & UX
 - Fully responsive (desktop & mobile)
 - Clean, intuitive interface
 - Animated icons & tooltips for better guidance
 
+### 💡 Dynamic Motivation System
+Each task generates a unique motivational quote based on:
+- Estimated time
+- Time left before deadline
+- Sessions completed
+
+It’s a tiny system that nudges you to **break it down, focus, and win.**
+
 ---
 
-## 📸 Screenshots
+## 📰 Live Demo
 
-Here’s a guided tour of Toki from login to productivity:
+Try Toki in action:
+
+🔗 [click here for live demo](https://toki-xichromes-projects.vercel.app)
+
+---
+
+## 🐋 Docker Support
+
+Toki is fully Dockerized with production-ready builds for both the **frontend** and **backend**.
+
+You can spin up both with:
+
+```bash
+docker compose up --build
+```
+
+This runs:
+- A **React + Vite frontend** 
+- A **Spring Boot backend**, connected to a **cloud-hosted PostgreSQL database**
+
+### 💠 Customize for Local Dev (Optional)
+
+If you'd like to run **everything 100% locally**, including the backend and database:
+
+1. **Uncomment** the db service inside docker-compose.yml.
+2. **Create your local .env file**:
+
+   ```env
+   # FRONTEND
+   VITE_BACKEND_URL=http://localhost:8080
+
+   # BACKEND
+   SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/tokidb
+   SPRING_DATASOURCE_USERNAME=postgres
+   SPRING_DATASOURCE_PASSWORD=tokipass
+   JWT_SECRET=some-random-long-secret
+   ```
+
+   
+3. **Expose the right port** in your frontend Dockerfile:
+   ```dockerfile
+   EXPOSE 3000
+   CMD ["npx", "serve", "-l", "3000", "dist"]
+   ```
+
+
+
+## 📸 Screenshots
 
 ### 🔑 Authentication
 
@@ -120,7 +176,7 @@ Here’s a guided tour of Toki from login to productivity:
 ### Backend
 - Spring Boot
 - Spring Security (JWT)
-- H2 (In-Memory DB)
+- PostgreSQL / H2
 - RESTful APIs
 
 ---
@@ -153,31 +209,6 @@ backend/src/main/java/com/taskmanager/taskmanager
 
 ---
 
-## 🔮 Getting Started
-
-### Prerequisites
-- Node.js & npm
-- Java 17+
-
-### Run the App Locally
-
-**Frontend:**
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-**Backend:**
-```bash
-cd backend
-./mvnw spring-boot:run
-```
-
-Both apps run independently. Frontend fetches from `http://localhost:8080`.
-
----
-
 ## 👨‍💻 About the Author
 
 Hey! I'm **Alae**, a **first-year software engineering student** from Morocco 🇲🇦.
@@ -190,17 +221,6 @@ My dream? To **work or intern in Japan** and grow through purposeful development
 
 ---
 
-## 💡 Dynamic Motivation System
-
-Each task generates a unique motivational quote based on:
-- Estimated time
-- Time left before deadline
-- Sessions completed
-
-It’s a tiny system that nudges you to **break it down, focus, and win.**
-
----
-
 ## 📃 License
 
 This project is not licensed. It’s a personal learning milestone.
@@ -208,4 +228,3 @@ This project is not licensed. It’s a personal learning milestone.
 ---
 
 *Built with grit, vision, and a tomato.* 🍅
-
