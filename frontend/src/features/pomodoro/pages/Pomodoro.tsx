@@ -67,7 +67,7 @@ const PomodoroPage = () => {
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, [isCounting, timeLeft]);
+  }, [isCounting]);
 
   const handleStartPause = () => {
     setIsCounting((prev) => !prev);

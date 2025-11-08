@@ -2,7 +2,7 @@ import { FaList, FaThLarge } from "react-icons/fa";
 import TaskListRow from "../components/TaskListRow";
 import { useTasks } from "../../../hooks/useTasks";
 import FloatingAddButton from "../../../components/FloatingAddButton";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Task } from "../../../types/task";
 import TaskCard from "../components/TaskCard";
 import SortDropdown from "../components/SortDropdown";
@@ -15,19 +15,13 @@ const TasksManagement = () => {
     const { tasks: initialTasks, loading } = useTasks();
     const [sortOption, setSortOption] = useState<"recent" | "dueDate" | "estimatedTime" | "progress">("recent");
     const [filterOption, setFilterOption] = useState<"all" | "priorityOnly">("all");
-    const [tasks, setTasks] = useState<Task[]>([]);
+    const [deletedTaskIds, setDeletedTaskIds] = useState<Set<number>>(new Set());
     const [board, setBoard] = useState<boolean>(true);
     const [userSettings, setUserSettings] = useState<UserSettings | null>(null);
 
     const removeTaskFromList = (id: number) => {
-        setTasks(prev => prev.filter(t => t.id !== id));
+        setDeletedTaskIds(prev => new Set(prev).add(id));
     };
-
-    useEffect(() => {
-        if (!loading) {
-            setTasks(initialTasks);
-        }
-    }, [loading, initialTasks]);
 
     useEffect(() => {
         const userId = localStorage.getItem("userId");
@@ -39,33 +33,34 @@ const TasksManagement = () => {
                 .catch((err) => console.error("Failed to fetch user settings", err));
         }
     }, []);
-    
 
-    useEffect(() => {
-        if (!loading) {
-            let filtered = [...initialTasks];
-            if (filterOption === "priorityOnly") {
-                filtered = filtered.filter(task => task.hasPriority);
-            }
-    
-            switch (sortOption) {
-                case "dueDate":
-                    filtered.sort((a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime());
-                    break;
-                case "estimatedTime":
-                    filtered.sort((a, b) => a.estimatedTime - b.estimatedTime);
-                    break;
-                case "progress":
-                    filtered.sort((a, b) => b.sessionsCount - a.sessionsCount); // a > b <=> b < a (> is before, < (the opposit of the previous) is less than)
-                    break;
-                default:
-                    filtered.sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
-                    break;
-            }
-    
-            setTasks(filtered);
+    // Memoized sorting and filtering - only recalculates when dependencies change
+    const tasks = useMemo(() => {
+        if (loading) return [];
+
+        let filtered = initialTasks.filter(task => !deletedTaskIds.has(task.id));
+
+        if (filterOption === "priorityOnly") {
+            filtered = filtered.filter(task => task.hasPriority);
         }
-    }, [loading, initialTasks, sortOption, filterOption]);    
+
+        switch (sortOption) {
+            case "dueDate":
+                filtered.sort((a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime());
+                break;
+            case "estimatedTime":
+                filtered.sort((a, b) => a.estimatedTime - b.estimatedTime);
+                break;
+            case "progress":
+                filtered.sort((a, b) => b.sessionsCount - a.sessionsCount);
+                break;
+            default:
+                filtered.sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
+                break;
+        }
+
+        return filtered;
+    }, [loading, initialTasks, sortOption, filterOption, deletedTaskIds]);    
 
     if (loading) {
         return (
